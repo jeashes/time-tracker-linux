@@ -7,7 +7,7 @@ for input program.
 <h2>Cloning & Run:</h2>
 
 <p>git clone https://github.com/jeashes/time-control.git</p>
-<p>cd time-track</p>
+<p>cd time-tracker-linux</p>
 <p>pip install -r requirements.txt</p>
 <p>python3 main.py</p>
 <p>input name of installed program</p>
