@@ -10,21 +10,18 @@ class AppManager:
         process_names = [proc.info['name'] for proc in process]
         
         return process_names
-    
-    def get_status_message(self) -> str:
-        if len(self.soft_names) > 0:
-            return f'{" ".join(self.soft_names)} are working'
-
-        return f'All app(s) has been closed\n'
 
     def is_app_running(self) -> bool:
         curr_process = self.get_curr_process()
+
+        print(f'{' '.join(self.soft_names)} are working')
 
         for name in self.soft_names:
             if name not in curr_process:
                 print(f'{name} has been closed')
                 self.soft_names.remove(name)
             return True
+        
         return False
 
     def is_startup(self) -> bool:

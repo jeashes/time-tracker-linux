@@ -8,7 +8,6 @@ class TimeManager:
         self.pattern = "%d/%m/%Y %H:%M:%S"
 
     def get_create_time(self) -> str:
-
         started_times = []
         process = process_iter(attrs=['name', 'create_time'])
 
@@ -26,7 +25,6 @@ class TimeManager:
         return started
 
     def get_end_time(self) -> str:
-
         curr_time = datetime.now()
         formatted_time = curr_time.strftime(self.pattern)
 

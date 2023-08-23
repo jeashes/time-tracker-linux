@@ -17,14 +17,17 @@ if __name__ == "__main__":
         data_manager.create_data()
         
         while app_manager.is_app_running():
+            message = app_manager.get_status_message()
+            print(message)
             data_manager.write_data()
             time.sleep(2) 
     
     try:
         data_manager.write_sessions()
-        print(data_manager.sessions)
+        [print(f'{k}: {v}min.') for k, v in data_manager.sessions.items()]
         #run(['python', 'time-control/main.py', f'{sessions}'])
 
     except NameError:
-       print('App is closed')
+        [print('App is closed'), print('Apps are closed')][len(apps_monitor) > 1]
+    
 
