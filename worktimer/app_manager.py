@@ -32,9 +32,10 @@ class AppManager:
         return all(list(map(lambda x: x in process_names, self.soft_names)))
 
 def get_installed_software_linux() -> list:
-    result = check_output(['pacman', '-Qe'], universal_newlines=True)
-    result = result.strip().split('\n')
-    installed_soft = [line.split()[0] for line in result]
+    #result = check_output(['pacman', '-Qe'], universal_newlines=True)
+    command = ["bash", "-c", "ls /usr/share/applications | awk -F '.desktop' '{print $1}'"]
+    result = check_output(command, universal_newlines=True).strip().split('\n')
+    installed_soft = ' '.join(result).lower()
     return installed_soft
 
 def get_name() -> list:
