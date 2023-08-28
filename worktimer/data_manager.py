@@ -1,6 +1,6 @@
 
 class DataManager:
-    def __init__(self, tmanagers: dict):
+    def __init__(self, tmanagers: list):
         self.tmanagers = tmanagers
         self.data_app_time = dict()
         self.sessions = dict()

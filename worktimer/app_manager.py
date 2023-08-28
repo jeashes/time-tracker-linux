@@ -3,7 +3,7 @@ from subprocess import check_output
 
 class AppManager:
     def __init__(self, soft_names: list):
-        self.soft_names = soft_names
+        self.soft_names = self.get_active_apps(soft_names)
 
     def get_curr_process(self) -> list:
         process = process_iter(attrs=['name'])
@@ -30,6 +30,9 @@ class AppManager:
     def is_startup(self) -> bool:
         process_names = self.get_curr_process()
         return all(list(map(lambda x: x in process_names, self.soft_names)))
+
+    def get_active_apps(self, apps_monitor: list) -> list:
+        return list(filter(lambda x: x in self.get_curr_process(), apps_monitor))
 
 def get_installed_software_linux() -> list:
     #result = check_output(['pacman', '-Qe'], universal_newlines=True)
