@@ -27,10 +27,6 @@ class AppManager:
             return True
         return False
 
-    def is_startup(self) -> bool:
-        process_names = self.get_curr_process()
-        return all(list(map(lambda x: x in process_names, self.soft_names)))
-
     def get_active_apps(self, apps_monitor: list) -> list:
         return list(filter(lambda x: x in self.get_curr_process(), apps_monitor))
 
