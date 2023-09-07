@@ -4,7 +4,7 @@ from worktimer.file_manager import FileManager
 from worktimer.time_manager import TimeManager
 from worktimer.data_manager import DataManager
 from worktimer.app_manager import (AppManager,
-                                   get_name,
+                                   ask_app_names,
                                    get_installed_software_linux)
 
 if __name__ == "__main__":
@@ -42,6 +42,9 @@ if __name__ == "__main__":
                 apps_session = ' '.join(list(map(str, data_manager.sessions.values())))
                 run(['python', 'time-control/main.py', apps_name, apps_session])
             except NameError:
-                [print('App is closed'), print('Apps are closed')][len(apps_monitor) > 1]
+                if len(apps_monitor) > 1: 
+                    print('Apps are closed') 
+                else: 
+                    print('App is closed')
 
 

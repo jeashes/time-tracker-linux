@@ -37,13 +37,13 @@ def get_installed_software_linux() -> list:
     installed_soft = ' '.join(result).lower()
     return installed_soft
 
-def get_name() -> list:
+def ask_app_names() -> list:
     count_of_apps = int(input('Quantity of apps for track: '))
     installed, names = get_installed_software_linux(), []
 
     for _ in range(count_of_apps):
         name = input('Input name app: ')
-        while (name in installed) != True:
+        while not (name in installed):
             name = input('Please, input correct name app: ')
 
         names.append(name)
